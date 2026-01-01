@@ -25,7 +25,7 @@ const App = () => {
         name: "The Big Meat Pizza",
         description: "Bacon, Pepperoni, Italian Sausage, Chorizo Sausage",
       }),
-    ]
+    ],
   );
 };
 

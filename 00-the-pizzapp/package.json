@@ -1,0 +1,32 @@
+{
+  "name": "00-the-pizzapp",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "react",
+    "course",
+    "javascript"
+  ],
+  "homepage": "https://github.com/40detectives/react-intro-v9#readme",
+  "bugs": {
+    "url": "https://github.com/40detectives/react-intro-v9/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/40detectives/react-intro-v9.git"
+  },
+  "license": "Apache-2.0",
+  "author": "40detectives",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.0.0",
+    "prettier": "^3.7.4"
+  }
+}
