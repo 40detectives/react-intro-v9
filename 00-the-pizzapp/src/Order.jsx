@@ -1,8 +1,9 @@
 import Pizza from "./Pizza";
+import { useState } from "react";
 
 export default function Order() {
-  const pizzaType = "pepperoni";
-  const pizzaSize = "M";
+  const [pizzaType, setPizzaType] = useState("pepperoni");
+  const [pizzaSize, setPizzaSize] = useState("M");
 
   return (
     <div className="order">
@@ -11,7 +12,12 @@ export default function Order() {
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza Type</label>
-            <select id="pizza-type" name="pizza-type" value={pizzaType}>
+            <select
+              id="pizza-type"
+              name="pizza-type"
+              value={pizzaType}
+              onChange={(e) => setPizzaType(e.target.value)}
+            >
               <option value="pepperoni">The Pepperoni Pizza</option>
               <option value="hawaiian">The Hawaiian Pizza</option>
               <option value="big_meat">The Big Meat</option>
@@ -28,6 +34,7 @@ export default function Order() {
                   value="S"
                   id="pizza-s"
                   checked={pizzaSize === "S"}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-s">Small</label>
               </span>
@@ -38,6 +45,7 @@ export default function Order() {
                   value="M"
                   id="pizza-m"
                   checked={pizzaSize === "M"}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-m">Medium</label>
               </span>
@@ -48,6 +56,7 @@ export default function Order() {
                   value="L"
                   id="pizza-l"
                   checked={pizzaSize === "L"}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-l">Large</label>
               </span>
