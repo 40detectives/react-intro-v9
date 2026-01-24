@@ -23,9 +23,8 @@ export default function Order() {
               <option value="big_meat">The Big Meat</option>
             </select>
           </div>
-          <div>
-            {/* TODO: THIS <LABEL> IS WEIRD, CHANGE IT TO SOMETHING ELSE */}
-            <label>Pizza Size</label>
+          <fieldset>
+            <legend>Pizza Size</legend>
             <div>
               <span>
                 <input
@@ -61,7 +60,7 @@ export default function Order() {
                 <label htmlFor="pizza-l">Large</label>
               </span>
             </div>
-          </div>
+          </fieldset>
           <button type="submit">Add to Cart</button>
         </div>
         <div className="order-pizza">

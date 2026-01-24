@@ -137,11 +137,16 @@ form > div:first-child {
   border-right: 1px solid #ccc;
 }
 
-form > div > div > label {
+form > div > div > label,
+form > div > fieldset > legend {
   display: block;
   font-size: 20px;
   color: var(--secondary);
   margin-bottom: 10px;
+}
+
+form > div > div + fieldset {
+  border-style: none;
 }
 
 form select {
@@ -173,13 +178,6 @@ form input + label {
 form input:checked + label {
   color: #333;
   background-color: #fff;
-}
-
-form > div > div > label {
-  display: block;
-  font-size: 20px;
-  color: var(--secondary);
-  margin-bottom: 10px;
 }
 
 .pizza {
