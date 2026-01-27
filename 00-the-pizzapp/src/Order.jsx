@@ -1,9 +1,37 @@
+import { useEffect, useState } from "react";
 import Pizza from "./Pizza";
-import { useState } from "react";
+
+const intl = new Intl.NumberFormat("es-ES", {
+  style: "currency",
+  currency: "EUR",
+});
 
 export default function Order() {
+  const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
+  const [loading, setLoading] = useState(true);
+
+  let price, selectedPizza;
+
+  if (!loading) {
+    selectedPizza = pizzaTypes.find((pizza) => pizzaType === pizza.id);
+    price = intl.format(selectedPizza.sizes?.[pizzaSize] ?? "");
+  }
+
+  async function fetchPizzaTypes() {
+    await new Promise((resolve) => setTimeout(resolve, 4000)); // fake a delay like there's real network delay
+    const pizzasRes = await fetch("/api/pizzas");
+    const pizzasJson = await pizzasRes.json();
+    setPizzaTypes(pizzasJson);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    // disabling eslint here because is giving a false positive at this moment in time
+    // https://github.com/facebook/react/issues/34905/
+    fetchPizzaTypes(); // eslint-disable-line react-hooks/set-state-in-effect
+  }, []);
 
   return (
     <div className="order">
@@ -15,12 +43,20 @@ export default function Order() {
             <select
               id="pizza-type"
               name="pizza-type"
-              value={pizzaType}
+              value={loading ? "fetching" : pizzaType}
               onChange={(e) => setPizzaType(e.target.value)}
             >
-              <option value="pepperoni">The Pepperoni Pizza</option>
-              <option value="hawaiian">The Hawaiian Pizza</option>
-              <option value="big_meat">The Big Meat</option>
+              {loading ? (
+                <option disabled value="fetching">
+                  Fetching menu... 🍽️
+                </option>
+              ) : (
+                pizzaTypes.map((pizza, i) => (
+                  <option key={pizza.id} value={pizza.id}>
+                    {i + " – " + pizza.name}
+                  </option>
+                ))
+              )}
             </select>
           </div>
           <fieldset>
@@ -64,12 +100,18 @@ export default function Order() {
           <button type="submit">Add to Cart</button>
         </div>
         <div className="order-pizza">
-          <Pizza
-            name="Pepperoni Pizza"
-            description="Mozzarella Cheese, Pepperoni"
-            image={"/public/pizzas/pepperoni.webp"}
-          />
-          <p>19.23€</p>
+          {loading ? (
+            <h3>Loading Pizzas lol...</h3>
+          ) : (
+            <>
+              <Pizza
+                name={selectedPizza.name}
+                description={selectedPizza.description}
+                image={selectedPizza.image}
+              />
+              <p>{price}</p>
+            </>
+          )}
         </div>
       </form>
     </div>
