@@ -118,9 +118,9 @@ h2::after {
   background-position: top left;
 }
 
-.order {
-  width: 100%;
-  margin-left: 5%;
+body > div > div {
+  /* width: 100%; */
+  margin: 2vw 4vw;
 }
 
 form div {
@@ -185,7 +185,7 @@ form input:checked + label {
 }
 
 .pizza img {
-  max-width: 200px;
+  max-width: 600px;
   border: 1px solid var(--border);
   border-radius: 5px;
 }
@@ -226,7 +226,7 @@ button:disabled {
 
 .order-pizza {
   width: 100%;
-  margin-left: 25px;
+  /* margin-left: 25px; */
 }
 
 .pizza {
