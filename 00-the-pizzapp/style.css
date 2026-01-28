@@ -118,19 +118,14 @@ h2::after {
   background-position: top left;
 }
 
-body > div > div {
-  /* width: 100%; */
-  margin: 2vw 4vw;
-}
-
 form div {
   margin: 10px 0;
   text-align: center;
 }
 
 form > div {
-  padding: 15px;
-  width: 100%;
+  padding: 15px min(25px, 3vw);
+  flex-basis: 33.3%;
 }
 
 form > div:first-child {
@@ -155,6 +150,8 @@ form select {
   padding: 5px;
   margin-bottom: 30px;
   width: 100%;
+  max-width: 85%;
+  margin-inline: auto;
 }
 
 form input[type="radio"] {
@@ -185,7 +182,8 @@ form input:checked + label {
 }
 
 .pizza img {
-  max-width: 600px;
+  max-width: 300px;
+  width: 100%;
   border: 1px solid var(--border);
   border-radius: 5px;
 }
@@ -202,8 +200,7 @@ form input:checked + label {
 
 .order form {
   display: flex;
-
-  justify-content: space-between;
+  justify-content: center;
 }
 
 button,
@@ -224,10 +221,8 @@ button:disabled {
   background-color: #ccc;
 }
 
-.order-pizza {
-  width: 100%;
-  /* margin-left: 25px; */
-}
+/*.order-pizza {
+}*/
 
 .pizza {
   justify-content: center;
