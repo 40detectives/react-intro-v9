@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 
 export const usePizzaOfTheDay = () => {
   const [pizzaOfTheDay, setPizzaOfTheDay] = useState(null);
+
+  useDebugValue(pizzaOfTheDay ? pizzaOfTheDay.name : "loading...");
 
   useEffect(() => {
     (async function fetchPizzaOfTheDay() {
