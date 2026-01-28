@@ -5,7 +5,7 @@ import Order from "./Order";
 export const App = () => {
   return (
     <div>
-      <h1>Padre Gino's – Order Now</h1>
+      <h1 className="logo">Padre Gino's – Order Now</h1>
       <Order />
     </div>
   );
