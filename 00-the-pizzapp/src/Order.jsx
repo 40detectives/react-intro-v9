@@ -19,18 +19,14 @@ export default function Order() {
     price = intl.format(selectedPizza.sizes?.[pizzaSize] ?? "");
   }
 
-  async function fetchPizzaTypes() {
-    await new Promise((resolve) => setTimeout(resolve, 4000)); // fake a delay like there's real network delay
-    const pizzasRes = await fetch("/api/pizzas");
-    const pizzasJson = await pizzasRes.json();
-    setPizzaTypes(pizzasJson);
-    setLoading(false);
-  }
-
   useEffect(() => {
-    // disabling eslint here because is giving a false positive at this moment in time
-    // https://github.com/facebook/react/issues/34905/
-    fetchPizzaTypes(); // eslint-disable-line react-hooks/set-state-in-effect
+    (async function fetchPizzaTypes() {
+      // await new Promise((resolve) => setTimeout(resolve, 4000)); // fake a delay like there's real network delay
+      const pizzasRes = await fetch("/api/pizzas");
+      const pizzasJson = await pizzasRes.json();
+      setPizzaTypes(pizzasJson);
+      setLoading(false);
+    })();
   }, []);
 
   return (
