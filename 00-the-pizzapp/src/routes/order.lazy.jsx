@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import Cart from "./Cart";
-import { CartContext } from "./contexts";
-import Pizza from "./Pizza";
+import { createLazyFileRoute } from "@tanstack/react-router";
+import Cart from "../Cart";
+import { CartContext } from "../contexts";
+import Pizza from "../Pizza";
+
+export const Route = createLazyFileRoute("/order")({ component: Order });
 
 const intl = new Intl.NumberFormat("es-ES", {
   style: "currency",
   currency: "EUR",
 });
 
-export default function Order() {
+function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
