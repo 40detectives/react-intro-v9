@@ -1,10 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
+    react(),
+  ],
   server: {
-    port: 1923,
+    port: 1924,
     proxy: {
       "/api": {
         target: "http://localhost:3000",
