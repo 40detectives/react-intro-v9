@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useState } from "react";
@@ -22,6 +23,7 @@ function RootComponent() {
         </div>
       </CartContext.Provider>
       <TanStackRouterDevtools />
+      <ReactQueryDevtools />
     </>
   );
 }
