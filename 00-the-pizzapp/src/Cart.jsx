@@ -1,7 +1,4 @@
-const intl = new Intl.NumberFormat("es-ES", {
-  style: "currency",
-  currency: "EUR",
-});
+import formatCurrency from "./formatCurrency";
 
 export default function Cart({ cart, checkout }) {
   let total = 0;
@@ -24,7 +21,7 @@ export default function Cart({ cart, checkout }) {
           </li>
         ))}
       </ul>
-      <p>Total: {intl.format(total)}</p>
+      <p>Total: {formatCurrency(total)}</p>
       <button onClick={checkout}>Checkout</button>
     </div>
   );
