@@ -1,5 +1,6 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
+import { target } from "happy-dom/lib/PropertySymbol";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -8,7 +9,11 @@ export default defineConfig({
       target: "react",
       autoCodeSplitting: true,
     }),
-    react(),
+    react({
+      babel: {
+        plugins: [["babel-plugin-react-compiler", { target: "19" }]],
+      },
+    }),
   ],
   server: {
     port: 1924,
